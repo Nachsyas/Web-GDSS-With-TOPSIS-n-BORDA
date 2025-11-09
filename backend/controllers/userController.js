@@ -7,32 +7,35 @@ const getAllUser = async (req, res) => {
     const response = await User.find();
 
     if (!response) {
-      res
-        .status(500)
-        .json({ message: "Error mengambil data user dari database: ", e });
+      return res.status(500).json({ message: "Error mengambil data user dari database" });
     }
 
     res.status(200).json(response);
-  } catch (e) {}
+  } catch (e) {
+    res.status(500).json({ message: `Error mengambil data user: ${e.message}` });
+  }
 };
 
 const getUserById = async (req, res) => {
-  const { id_user } = req.body;
+  const { id_user } = req.query;
+
+  if (!id_user) {
+    return res.status(400).json({ message: "id_user is required" });
+  }
+  console.log(id_user);
 
   try {
-    const response = await User.findById({ _id: id_user });
+    const response = await User.findById(id_user);
 
     if (!response) {
-      res.status(500).json({
+      return res.status(404).json({
         message: `Tidak ada data user dengan id ${id_user} yang ditemukan`,
       });
     }
 
     res.status(200).json(response);
   } catch (e) {
-    throw Exception(
-      `Error mengambil data user id:${id_user} dari database: ${e}`
-    );
+    throw new Error(`Error mengambil data user id:${id_user} dari database: ${e.message}`);
   }
 };
 
@@ -42,17 +45,54 @@ const updateUser = async (req, res) => {
   try {
     const existingUser = await User.findOne({ _id: id_user });
 
+    if (!existingUser) {
+      return res.status(404).json({ message: `User dengan id ${id_user} tidak ditemukan` });
+    }
+
     existingUser.nama = nama;
     existingUser.email = email;
     existingUser.peran = peran;
 
     await existingUser.save();
 
-    res
-      .status(200)
-      .json({ message: "Berhasil update data user id: ", id_user });
+    res.sendStatus(200);
   } catch (e) {
-    throw Exception(`Error mengupdate data user id:${id_user}: ${e}`);
+    throw new Error(`Error mengupdate data user id:${id_user}: ${e.message}`);
+  }
+};
+
+const createUser = async (req, res) => {
+  const { nama, email, password, peran } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.create({
+      nama: nama,
+      email: email,
+      password: hashedPassword,
+      peran: peran,
+    });
+
+    res.sendStatus(201);
+  } catch (e) {
+    throw new Error(`Error menambah data user: ${e.message}`);
+  }
+};
+
+const deleteUser = async (req, res) => {
+  const { id_user } = req.query;
+
+  try {
+    const user = await User.findByIdAndDelete(id_user);
+
+    if (!user) {
+      return res.status(404).json({ message: "User tidak ditemukan" });
+    }
+
+    res.sendStatus(200);
+  } catch (e) {
+    res.status(500).json({ message: `Error deleting user: ${e.message}` });
   }
 };
 
@@ -64,20 +104,16 @@ const ubahPassword = async (req, res) => {
     const existingUser = await User.findOne({ _id: id_user });
 
     if (!existingUser) {
-      return res
-        .status(404)
-        .json({ message: `User with ID ${id_user} tidak ditemukan` });
+      return res.status(404).json({ message: `User with ID ${id_user} tidak ditemukan` });
     }
 
     existingUser.password = hashedPassword;
 
     await existingUser.save();
 
-    res
-      .status(200)
-      .json({ message: "Berhasil update password user id: ", id_user });
+    res.sendStatus(200);
   } catch (e) {
-    console.error(`Error updating password for user id:${id_user}: ${e}`);
+    console.error(`Error updating password for user id:${id_user}: ${e.message}`);
     res.status(500).json({ message: `Error updating password: ${e.message}` });
   }
 };
@@ -87,4 +123,6 @@ module.exports = {
   getUserById,
   updateUser,
   ubahPassword,
+  createUser,
+  deleteUser
 };

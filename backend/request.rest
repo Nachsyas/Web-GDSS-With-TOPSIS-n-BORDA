@@ -4,8 +4,8 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email":"adam@gmail.com",
-    "password":"password"
+    "email":"arham@gmail.com",
+    "password":"password2"
 }
 
 ### Register
@@ -26,7 +26,7 @@ POST http://localhost:5000/auth/logout
 POST http://localhost:5000/auth/refresh 
 
 ### Token
-@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6IkFkYW0gRmF0aW4iLCJlbWFpbCI6ImFkYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2MjcwNDIwOSwiZXhwIjoxNzYyNzA3ODA5fQ.nEN_pzWCD1cIjsIZXhWH7SlAu_q3RJWNOHfYF5eppFE
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIiwiZW1haWwiOiJhcmhhbUBnbWFpbC5jb20iLCJwZXJhbiI6IkRlY2lzaW9uIE1ha2VyIDEiLCJ0Z2xfYmVyZ2FidW5nIjoiMjAyNS0xMS0wOVQxMzo1MTozOC41MDFaIiwiaWF0IjoxNzYyNzA4MzE4LCJleHAiOjE3NjI3MTE5MTh9.hyuDgGXRBkhEl_x7YDH_lJ4sOXju-v0TRQTaxP-2M_0
 
 ### Dashboard
 GET http://localhost:5000/
@@ -37,20 +37,36 @@ GET http://localhost:5000/user/
 Authorization: Bearer {{accessToken}}
 
 ### Get User By Id
-GET http://localhost:5000/user?id_user=69109c6a6a0c7a5786f4c696
+GET http://localhost:5000/user/find?id_user=6910cb902e5b13934a3a9b67
 Authorization: Bearer {{accessToken}}
 
 ### Update User By Id
-POST http://localhost:5000/user
+PUT http://localhost:5000/user
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
     "id_user":"69109c6a6a0c7a5786f4c696",
-    "nama":"Adam Fatin",
-    "email":"adam@gmail.com",
+    "nama":"Nachsyas Arham Mumtaz",
+    "email":"arham@gmail.com",
     "peran":"Decision Maker 1"
 }
+
+### Create New User
+POST http://localhost:5000/user
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Adam Fatin",
+    "email":"adam@gmail.com",
+    "password":"password",
+    "peran":"Decision Maker 2"
+}
+
+### Delete User
+DELETE http://localhost:5000/user?id_user=6910cb372e5b13934a3a9b56
+Authorization: Bearer {{accessToken}}
 
 ### Update Password
 POST http://localhost:5000/user/password
@@ -59,5 +75,5 @@ Content-Type: application/json
 
 {
     "id_user":"69109c6a6a0c7a5786f4c696",
-    "password":"password"
+    "password":"password2"
 }
