@@ -1,0 +1,63 @@
+
+### Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email":"adam@gmail.com",
+    "password":"password"
+}
+
+### Register
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "nama":"Adam Fatin",
+    "email":"adam@gmail.com",
+    "password":"password",
+    "peran":"Decision Maker 1"
+}
+
+### Logout
+POST http://localhost:5000/auth/logout
+
+### Refresh Access Token
+POST http://localhost:5000/auth/refresh 
+
+### Token
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6IkFkYW0gRmF0aW4iLCJlbWFpbCI6ImFkYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2MjcwNDIwOSwiZXhwIjoxNzYyNzA3ODA5fQ.nEN_pzWCD1cIjsIZXhWH7SlAu_q3RJWNOHfYF5eppFE
+
+### Dashboard
+GET http://localhost:5000/
+Authorization: Bearer {{accessToken}}
+
+### Get All Users
+GET http://localhost:5000/user/
+Authorization: Bearer {{accessToken}}
+
+### Get User By Id
+GET http://localhost:5000/user?id_user=69109c6a6a0c7a5786f4c696
+Authorization: Bearer {{accessToken}}
+
+### Update User By Id
+POST http://localhost:5000/user
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_user":"69109c6a6a0c7a5786f4c696",
+    "nama":"Adam Fatin",
+    "email":"adam@gmail.com",
+    "peran":"Decision Maker 1"
+}
+
+### Update Password
+POST http://localhost:5000/user/password
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_user":"69109c6a6a0c7a5786f4c696",
+    "password":"password"
+}
