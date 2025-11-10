@@ -1,6 +1,6 @@
 
 ### Login
-POST http://localhost:5000/auth/login
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Register
-POST http://localhost:5000/auth/register
+POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
@@ -20,28 +20,32 @@ Content-Type: application/json
 }
 
 ### Logout
-POST http://localhost:5000/auth/logout
+POST http://localhost:5000/api/auth/logout
 
 ### Refresh Access Token
-POST http://localhost:5000/auth/refresh 
+POST http://localhost:5000/api/auth/refresh 
 
 ### Token
-@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIiwiZW1haWwiOiJhcmhhbUBnbWFpbC5jb20iLCJwZXJhbiI6IkRlY2lzaW9uIE1ha2VyIDEiLCJ0Z2xfYmVyZ2FidW5nIjoiMjAyNS0xMS0wOVQxMzo1MTozOC41MDFaIiwiaWF0IjoxNzYyNzA4MzE4LCJleHAiOjE3NjI3MTE5MTh9.hyuDgGXRBkhEl_x7YDH_lJ4sOXju-v0TRQTaxP-2M_0
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwiZW1haWwiOiJhcmhhbUBnbWFpbC5jb20iLCJpYXQiOjE3NjI3NTgyMjMsImV4cCI6MTc2Mjc2MTgyM30.G3hQ7H3QWZu8SERAxFQj_TBVfah4xg5IywumB3rzUWE
 
 ### Dashboard
-GET http://localhost:5000/
+GET http://localhost:5000/api/
 Authorization: Bearer {{accessToken}}
 
 ### Get All Users
-GET http://localhost:5000/user/
+GET http://localhost:5000/api/user/
 Authorization: Bearer {{accessToken}}
 
 ### Get User By Id
-GET http://localhost:5000/user/find?id_user=6910cb902e5b13934a3a9b67
+GET http://localhost:5000/api/user/find?id_user=6910cb902e5b13934a3a9b67
 Authorization: Bearer {{accessToken}}
 
-### Update User By Id
-PUT http://localhost:5000/user
+### Get Total User
+GET http://localhost:5000/api/user/total
+Authorization: Bearer {{accessToken}}
+
+### Update User By Id   
+PUT http://localhost:5000/api/user
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -53,7 +57,7 @@ Content-Type: application/json
 }
 
 ### Create New User
-POST http://localhost:5000/user
+POST http://localhost:5000/api/user
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -65,11 +69,11 @@ Content-Type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:5000/user?id_user=6910cb372e5b13934a3a9b56
+DELETE http://localhost:5000/api/user?id_user=6910cb372e5b13934a3a9b56
 Authorization: Bearer {{accessToken}}
 
 ### Update Password
-POST http://localhost:5000/user/password
+POST http://localhost:5000/api/user/password
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -77,3 +81,85 @@ Content-Type: application/json
     "id_user":"69109c6a6a0c7a5786f4c696",
     "password":"password2"
 }
+
+### Get All Alternatif
+GET http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+
+### Get Total Alternatif
+GET http://localhost:5000/api/alternatif/total
+Authorization: Bearer {{accessToken}}
+
+### Add Alternatif
+POST http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Mie Titi Panakkukang",
+    "deskripsi":"Mie kering khas Makassar favorit wisatawan."
+}
+
+### Update Alternatif
+PUT http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_alternatif":"69117a7691a69d09370572a1",
+    "nama":"Sop Saudara Irian",
+    "deskripsi":"Menyajikan sop khas Makassar dengan cita rasa gurih."
+}
+
+### Delete Alternatif
+DELETE http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_alternatif":"691180fb65de5d03ecbd1f40"
+}
+
+### Get All Kriteria
+GET http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+### Get Kriteria By Id
+GET http://localhost:5000/api/kriteria/id/691185a10957d42373ba59a5
+Authorization: Bearer {{accessToken}}
+
+### Get Kriteria By Tipe
+GET http://localhost:5000/api/kriteria/tipe/benefit
+Authorization: Bearer {{accessToken}}
+
+### Get Total Kriteria
+GET http://localhost:5000/api/kriteria/total
+Authorization: Bearer {{accessToken}}
+
+### Add Kriteria
+POST http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Kebersihan Tempat",
+    "tipe":"Benefit",
+    "bobot":4.50
+}
+
+### Update Kriteria
+PUT http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_kriteria":"6911858d0957d42373ba59a2",
+    "nama":"Kebersihan Tempat",
+    "tipe":"Benefit",
+    "bobot":4.50
+}
+
+### Delete Kriteria
+DELETE http://localhost:5000/api/kriteria?id_kriteria=6911858d0957d42373ba59a2
+Authorization: Bearer {{accessToken}}

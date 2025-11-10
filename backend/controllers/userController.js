@@ -39,6 +39,16 @@ const getUserById = async (req, res) => {
   }
 };
 
+const getTotalUser=async (req,res)=>{
+  try{
+    const total=await User.countDocuments()
+
+    res.status(200).json(total)
+  }catch(e){
+    res.status(500).json({message:"Error mengambil total user dari database: ",e})
+  }
+}
+
 const updateUser = async (req, res) => {
   const { id_user, nama, email, peran } = req.body;
 
@@ -124,5 +134,6 @@ module.exports = {
   updateUser,
   ubahPassword,
   createUser,
+  getTotalUser,
   deleteUser
 };

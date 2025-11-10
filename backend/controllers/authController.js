@@ -156,7 +156,7 @@ const logout = async (req, res) => {
       sameSite: "Strict",
     });
 
-    res.status(200).json({ message: "Logout berhasil" });
+    res.sendStatus(200)
   } catch (e) {
     throw Exception("Gagal logout: ", e);
   }

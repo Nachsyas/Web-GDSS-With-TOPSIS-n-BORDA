@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const moment = require("moment-timezone");
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,9 +19,9 @@ const userSchema = new mongoose.Schema(
     peran: {
       type: String,
       required: true,
-    }
+    },
   },
   { timestamps: true }
 );
 
-module.exports=mongoose.model('User',userSchema)
+module.exports = mongoose.model("User", userSchema);

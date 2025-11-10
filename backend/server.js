@@ -4,6 +4,8 @@ const mongoose=require('mongoose')
 const cookieParser=require('cookie-parser')
 const userRouter=require('./routes/user')
 const authRouter=require('./routes/auth')
+const alternatifRouter=require('./routes/alternatif')
+const kriteriaRouter=require('./routes/kriteria')
 const { authenticateToken } = require('./controllers/authController')
 
 dotenv.config()
@@ -24,8 +26,10 @@ app.listen(port,()=>{
     console.log("App Running")
 })
 
-app.get('/',authenticateToken,(req,res)=>{
+app.get('/api',authenticateToken,(req,res)=>{
     res.send("Server is running")
 })
-app.use('/user',authenticateToken,userRouter)
-app.use('/auth',authRouter)
+app.use('/api/user',authenticateToken,userRouter)
+app.use('/api/auth',authRouter)
+app.use('/api/alternatif',authenticateToken,alternatifRouter)
+app.use('/api/kriteria',authenticateToken,kriteriaRouter)
