@@ -12,7 +12,13 @@ const kriteriaSchema=new mongoose.Schema({
     bobot:{
         type: Number,
         required: true
-    }
+    },
+    nilai:[
+        {
+            key:String,
+            value: mongoose.Schema.Types.Mixed
+        }
+    ]
 },{timestamps:true})
 
 module.exports=mongoose.model('Kriteria',kriteriaSchema)

@@ -10,13 +10,14 @@ const toTitleCase=(str)=>{
 }
 
 const addKriteria=async(req,res)=>{
-    const {nama,tipe,bobot}=req.body
+    const {nama,tipe,bobot,nilai}=req.body
 
     try{
         await Kriteria.create({
             nama:nama,
             tipe:tipe,
-            bobot:bobot
+            bobot:bobot,
+            nilai:nilai
         })
 
         res.sendStatus(201)

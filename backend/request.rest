@@ -26,7 +26,7 @@ POST http://localhost:5000/api/auth/logout
 POST http://localhost:5000/api/auth/refresh 
 
 ### Token
-@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwiZW1haWwiOiJhcmhhbUBnbWFpbC5jb20iLCJpYXQiOjE3NjI3NTgyMjMsImV4cCI6MTc2Mjc2MTgyM30.G3hQ7H3QWZu8SERAxFQj_TBVfah4xg5IywumB3rzUWE
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIE11bXRheiIsImVtYWlsIjoiYXJoYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2Mjc2MDg0MCwiZXhwIjoxNzYyNzY0NDQwfQ.kNQ22s9K7KizDV8DwrtFFXab5TodgCpcY6fQBRzCb8Y
 
 ### Dashboard
 GET http://localhost:5000/api/
@@ -143,9 +143,16 @@ Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-    "nama":"Kebersihan Tempat",
-    "tipe":"Benefit",
-    "bobot":4.50
+    "nama":"Biaya Transportasi",
+    "tipe":"Cost",
+    "bobot":3.50,
+    "nilai":[
+        {"key":"1","value":"Sangat Murah"},
+        {"key":"2","value":"Murah"},
+        {"key":"3","value":"Cukup Murah"},
+        {"key":"4","value":"Mahal"},
+        {"key":"5","value":"Sangat Mahal"}
+    ]
 }
 
 ### Update Kriteria
@@ -161,5 +168,5 @@ Content-Type: application/json
 }
 
 ### Delete Kriteria
-DELETE http://localhost:5000/api/kriteria?id_kriteria=6911858d0957d42373ba59a2
+DELETE http://localhost:5000/api/kriteria?id_kriteria=69118fb7812b6cf3718a6d7a
 Authorization: Bearer {{accessToken}}
