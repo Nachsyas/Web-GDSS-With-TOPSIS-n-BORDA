@@ -1,6 +1,6 @@
 
 ### Login
-POST http://localhost:5000/api/auth/login
+POST https://web-gdss.vercel.app/api/auth/login
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ POST http://localhost:5000/api/auth/refresh
 @accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIE11bXRheiIsImVtYWlsIjoiYXJoYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2Mjc2MDg0MCwiZXhwIjoxNzYyNzY0NDQwfQ.kNQ22s9K7KizDV8DwrtFFXab5TodgCpcY6fQBRzCb8Y
 
 ### Dashboard
-GET http://localhost:5000/api/
+GET https://web-gdss.vercel.app/api/
 Authorization: Bearer {{accessToken}}
 
 ### Get All Users
