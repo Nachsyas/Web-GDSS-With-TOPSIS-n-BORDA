@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Register
-POST http://localhost:5000/api/auth/register
+POST https://web-gdss.vercel.app/api/auth/register
 Content-Type: application/json
 
 {
@@ -20,32 +20,32 @@ Content-Type: application/json
 }
 
 ### Logout
-POST http://localhost:5000/api/auth/logout
+POST https://web-gdss.vercel.app/api/auth/logout
 
 ### Refresh Access Token
-POST http://localhost:5000/api/auth/refresh 
+POST https://web-gdss.vercel.app/api/auth/refresh 
 
 ### Token
-@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIE11bXRheiIsImVtYWlsIjoiYXJoYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2Mjc2MDg0MCwiZXhwIjoxNzYyNzY0NDQwfQ.kNQ22s9K7KizDV8DwrtFFXab5TodgCpcY6fQBRzCb8Y
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIE11bXRheiIsImVtYWlsIjoiYXJoYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2Mjc2NzU1OCwiZXhwIjoxNzYyNzcxMTU4fQ.z7TRjZxPkQtehDX-uEcbMM5Xhc2L5P5WKXtiAPUc7ns
 
 ### Dashboard
 GET https://web-gdss.vercel.app/api/
 Authorization: Bearer {{accessToken}}
 
 ### Get All Users
-GET http://localhost:5000/api/user/
+GET https://web-gdss.vercel.app/api/user/
 Authorization: Bearer {{accessToken}}
 
 ### Get User By Id
-GET http://localhost:5000/api/user/find?id_user=6910cb902e5b13934a3a9b67
+GET https://web-gdss.vercel.app/api/user/find?id_user=6910cb902e5b13934a3a9b67
 Authorization: Bearer {{accessToken}}
 
 ### Get Total User
-GET http://localhost:5000/api/user/total
+GET https://web-gdss.vercel.app/api/user/total
 Authorization: Bearer {{accessToken}}
 
 ### Update User By Id   
-PUT http://localhost:5000/api/user
+PUT https://web-gdss.vercel.app/api/user
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### Create New User
-POST http://localhost:5000/api/user
+POST https://web-gdss.vercel.app/api/user
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -69,11 +69,11 @@ Content-Type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:5000/api/user?id_user=6910cb372e5b13934a3a9b56
+DELETE https://web-gdss.vercel.app/api/user?id_user=6910cb372e5b13934a3a9b56
 Authorization: Bearer {{accessToken}}
 
 ### Update Password
-POST http://localhost:5000/api/user/password
+POST https://web-gdss.vercel.app/api/user/password
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -83,15 +83,15 @@ Content-Type: application/json
 }
 
 ### Get All Alternatif
-GET http://localhost:5000/api/alternatif
+GET https://web-gdss.vercel.app/api/alternatif
 Authorization: Bearer {{accessToken}}
 
 ### Get Total Alternatif
-GET http://localhost:5000/api/alternatif/total
+GET https://web-gdss.vercel.app/api/alternatif/total
 Authorization: Bearer {{accessToken}}
 
 ### Add Alternatif
-POST http://localhost:5000/api/alternatif
+POST https://web-gdss.vercel.app/api/alternatif
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -101,7 +101,7 @@ Content-Type: application/json
 }
 
 ### Update Alternatif
-PUT http://localhost:5000/api/alternatif
+PUT https://web-gdss.vercel.app/api/alternatif
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -112,7 +112,7 @@ Content-Type: application/json
 }
 
 ### Delete Alternatif
-DELETE http://localhost:5000/api/alternatif
+DELETE https://web-gdss.vercel.app/api/alternatif
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -121,24 +121,24 @@ Content-Type: application/json
 }
 
 ### Get All Kriteria
-GET http://localhost:5000/api/kriteria
+GET https://web-gdss.vercel.app/api/kriteria
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 ### Get Kriteria By Id
-GET http://localhost:5000/api/kriteria/id/691185a10957d42373ba59a5
+GET https://web-gdss.vercel.app/api/kriteria/id/691185a10957d42373ba59a5
 Authorization: Bearer {{accessToken}}
 
 ### Get Kriteria By Tipe
-GET http://localhost:5000/api/kriteria/tipe/benefit
+GET https://web-gdss.vercel.app/api/kriteria/tipe/benefit
 Authorization: Bearer {{accessToken}}
 
 ### Get Total Kriteria
-GET http://localhost:5000/api/kriteria/total
+GET https://web-gdss.vercel.app/api/kriteria/total
 Authorization: Bearer {{accessToken}}
 
 ### Add Kriteria
-POST http://localhost:5000/api/kriteria
+POST https://web-gdss.vercel.app/api/kriteria
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -156,7 +156,7 @@ Content-Type: application/json
 }
 
 ### Update Kriteria
-PUT http://localhost:5000/api/kriteria
+PUT https://web-gdss.vercel.app/api/kriteria
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
@@ -168,5 +168,5 @@ Content-Type: application/json
 }
 
 ### Delete Kriteria
-DELETE http://localhost:5000/api/kriteria?id_kriteria=69118fb7812b6cf3718a6d7a
+DELETE https://web-gdss.vercel.app/api/kriteria?id_kriteria=69118fb7812b6cf3718a6d7a
 Authorization: Bearer {{accessToken}}
