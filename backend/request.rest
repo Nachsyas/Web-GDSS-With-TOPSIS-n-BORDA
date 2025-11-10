@@ -1,0 +1,172 @@
+
+### Login
+POST https://web-gdss.vercel.app/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"arham@gmail.com",
+    "password":"password2"
+}
+
+### Register
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "nama":"Adam Fatin",
+    "email":"adam@gmail.com",
+    "password":"password",
+    "peran":"Decision Maker 1"
+}
+
+### Logout
+POST http://localhost:5000/api/auth/logout
+
+### Refresh Access Token
+POST http://localhost:5000/api/auth/refresh 
+
+### Token
+@accessToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiNjkxMDljNmE2YTBjN2E1Nzg2ZjRjNjk2IiwibmFtYSI6Ik5hY2hzeWFzIEFyaGFtIE11bXRheiIsImVtYWlsIjoiYXJoYW1AZ21haWwuY29tIiwicGVyYW4iOiJEZWNpc2lvbiBNYWtlciAxIiwidGdsX2JlcmdhYnVuZyI6IjIwMjUtMTEtMDlUMTM6NTE6MzguNTAxWiIsImlhdCI6MTc2Mjc2MDg0MCwiZXhwIjoxNzYyNzY0NDQwfQ.kNQ22s9K7KizDV8DwrtFFXab5TodgCpcY6fQBRzCb8Y
+
+### Dashboard
+GET https://web-gdss.vercel.app/api/
+Authorization: Bearer {{accessToken}}
+
+### Get All Users
+GET http://localhost:5000/api/user/
+Authorization: Bearer {{accessToken}}
+
+### Get User By Id
+GET http://localhost:5000/api/user/find?id_user=6910cb902e5b13934a3a9b67
+Authorization: Bearer {{accessToken}}
+
+### Get Total User
+GET http://localhost:5000/api/user/total
+Authorization: Bearer {{accessToken}}
+
+### Update User By Id   
+PUT http://localhost:5000/api/user
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_user":"69109c6a6a0c7a5786f4c696",
+    "nama":"Nachsyas Arham Mumtaz",
+    "email":"arham@gmail.com",
+    "peran":"Decision Maker 1"
+}
+
+### Create New User
+POST http://localhost:5000/api/user
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Adam Fatin",
+    "email":"adam@gmail.com",
+    "password":"password",
+    "peran":"Decision Maker 2"
+}
+
+### Delete User
+DELETE http://localhost:5000/api/user?id_user=6910cb372e5b13934a3a9b56
+Authorization: Bearer {{accessToken}}
+
+### Update Password
+POST http://localhost:5000/api/user/password
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_user":"69109c6a6a0c7a5786f4c696",
+    "password":"password2"
+}
+
+### Get All Alternatif
+GET http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+
+### Get Total Alternatif
+GET http://localhost:5000/api/alternatif/total
+Authorization: Bearer {{accessToken}}
+
+### Add Alternatif
+POST http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Mie Titi Panakkukang",
+    "deskripsi":"Mie kering khas Makassar favorit wisatawan."
+}
+
+### Update Alternatif
+PUT http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_alternatif":"69117a7691a69d09370572a1",
+    "nama":"Sop Saudara Irian",
+    "deskripsi":"Menyajikan sop khas Makassar dengan cita rasa gurih."
+}
+
+### Delete Alternatif
+DELETE http://localhost:5000/api/alternatif
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_alternatif":"691180fb65de5d03ecbd1f40"
+}
+
+### Get All Kriteria
+GET http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+### Get Kriteria By Id
+GET http://localhost:5000/api/kriteria/id/691185a10957d42373ba59a5
+Authorization: Bearer {{accessToken}}
+
+### Get Kriteria By Tipe
+GET http://localhost:5000/api/kriteria/tipe/benefit
+Authorization: Bearer {{accessToken}}
+
+### Get Total Kriteria
+GET http://localhost:5000/api/kriteria/total
+Authorization: Bearer {{accessToken}}
+
+### Add Kriteria
+POST http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "nama":"Biaya Transportasi",
+    "tipe":"Cost",
+    "bobot":3.50,
+    "nilai":[
+        {"key":"1","value":"Sangat Murah"},
+        {"key":"2","value":"Murah"},
+        {"key":"3","value":"Cukup Murah"},
+        {"key":"4","value":"Mahal"},
+        {"key":"5","value":"Sangat Mahal"}
+    ]
+}
+
+### Update Kriteria
+PUT http://localhost:5000/api/kriteria
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "id_kriteria":"6911858d0957d42373ba59a2",
+    "nama":"Kebersihan Tempat",
+    "tipe":"Benefit",
+    "bobot":4.50
+}
+
+### Delete Kriteria
+DELETE http://localhost:5000/api/kriteria?id_kriteria=69118fb7812b6cf3718a6d7a
+Authorization: Bearer {{accessToken}}
